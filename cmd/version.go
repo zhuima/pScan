@@ -17,6 +17,8 @@ var (
     version   string
     buildTime string
     osArch    string
+	gitCommit    string
+	goVersion    string
 )
 
 
@@ -25,7 +27,8 @@ var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "A brief description of your command",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("Version: %s\nBuilt: %s\nOS/Arch: %s\n", version, buildTime, osArch)
+		// fmt.Printf("Version: %s\nBuilt: %s\nOS/Arch: %s\n", version, buildTime, osArch)
+		fmt.Printf("Version: %s\nCommitId: %s\nBuild Date: %s\nGo Version: %s\nOS/Arch: %s\n", version, gitCommit, buildTime, goVersion, osArch)
 	},
 }
 

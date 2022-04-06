@@ -1,4 +1,29 @@
-version: '2'
+version: '3'
+
+
+
+vars:
+  # version
+  VERSION: "0.0.2"
+
+  # gitTag
+  GITTAG: 
+    sh: echo "$(git log --pretty=format:'%h' -n 1)"
+
+  # commitID
+  GITCOMMIT:
+    sh: echo "$(git rev-parse --short HEAD)"
+
+  # gitBranch
+  GITBRANCH:
+    sh: echo "$(git rev-parse --abbrev-ref HEAD)"
+
+  # time
+  BUILDDATE: 
+    sh: echo "$(TZ=Asia/Shanghai date +%FT%T%z)"
+
+
+
 
 tasks:
   up:
@@ -37,7 +62,8 @@ tasks:
   build:
     desc: "Run build"
     cmds:
-      - go build -ldflags '-s -w'  -o dist/pScan main.go
+      # - go build -ldflags '-s -w' "-X 'github.com/zhuima/pScan/cmd/version.version=0.1'"  -o dist/pScan main.go
+      - go build -ldflags="-s -w -X 'github.com/zhuima/pScan/cmd.version={{ .VERSION }}' -X 'github.com/zhuima/pScan/cmd.buildTime={{ .BUILDDATE }} '  -X 'github.com/zhuima/pScan/cmd.gitCommit={{ .GITCOMMIT }}'"  -o dist/pScan main.go
 
   clean:
     desc: "Run clean"
