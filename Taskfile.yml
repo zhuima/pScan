@@ -1,0 +1,45 @@
+version: '2'
+
+tasks:
+  up:
+    desc: "Run docker compose and subscribe to logs"
+    deps: [down]
+    cmds:
+      - docker-compose up --build -d
+      - docker logs -f api
+  down:
+    desc: "Stop docker compose"
+    silent: true
+    cmds:
+      - docker-compose down
+  coverage:
+    desc: 'Run tests with coverage and open report in default browser'
+    cmds:
+      - go test -coverprofile=./tmp/cover.out ./...
+      - go tool cover -html=./tmp/cover.out -o ./tmp/cover.html
+      - open ./tmp/cover.html
+  attach_hooks:
+    desc: "Attach git hooks"
+    cmds:
+      - cp ./tools/pre-commit.sh ./.git/hooks/pre-commit
+      - cp ./tools/pre-push.sh ./.git/hooks/pre-push
+      - chmod 777 ./.git/hooks/pre-commit
+      - chmod 777 ./.git/hooks/pre-push
+  lint:
+    desc: "Run linter"
+    cmds:
+      - golangci-lint run --tests=0 ./...
+  test:
+    desc: "Run tests"
+    cmds:
+      - go test -v 
+
+  build:
+    desc: "Run build"
+    cmds:
+      - go build -ldflags '-s -w' "-X 'pScan/cmd/version.version=0.1'"  -o dist/pScan main.go
+
+  clean:
+    desc: "Run clean"
+    cmds:
+      - rm -rf bin/*
