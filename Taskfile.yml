@@ -37,7 +37,7 @@ tasks:
   build:
     desc: "Run build"
     cmds:
-      - go build -ldflags '-s -w' "-X 'pScan/cmd/version.version=0.1'"  -o dist/pScan main.go
+      - go build -ldflags '-s -w'  -o dist/pScan main.go
 
   clean:
     desc: "Run clean"

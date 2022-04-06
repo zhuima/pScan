@@ -6,7 +6,7 @@ Check LICENSE for details.
 */
 // Package scan provides types and functions for scanning a list of hosts.
 // scans on a list of hosts.
-package github.com/zhuima/pScan/scan
+package scan
 
 import (
 	"bufio"

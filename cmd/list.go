@@ -11,7 +11,7 @@ import (
 	"io"
 	"os"
 
-	"pScan/scan"
+	"github.com/zhuima/pScan/scan"
 	"github.com/spf13/viper"
 
 	"github.com/spf13/cobra"

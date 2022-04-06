@@ -1,4 +1,4 @@
-package github.com/zhuima/pScan/scan
+package scan
 
 import (
 	"fmt"

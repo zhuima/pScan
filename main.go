@@ -7,7 +7,7 @@ Check LICENSE for details.
 package main
 
 import (
-	"pScan/cmd"
+	"github.com/zhuima/pScan/cmd"
 )
 
 func main() {
