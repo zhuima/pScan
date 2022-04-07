@@ -24,7 +24,7 @@ jobs:
 
       - name: Set GOVERSION env
         id: set-goversion-env
-        run: echo "::set-env name=GOVERSION::$(go version)"
+        run: echo "::set-output name=GOVERSION::$(go version | awk -F'version' '{print $2}' | awk '{print $1}')"
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
