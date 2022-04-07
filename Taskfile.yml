@@ -19,7 +19,7 @@ vars:
     sh: echo "$(git rev-parse --abbrev-ref HEAD)"
 
   # time
-  BUILDDATE: 
+  BUILDTIME: 
     sh: echo "$(TZ=Asia/Shanghai date +%FT%T%z)"
 
 
@@ -66,7 +66,7 @@ tasks:
     desc: "Run build"
     cmds:
       # - go build -ldflags '-s -w' "-X 'github.com/zhuima/pScan/cmd/version.version=0.1'"  -o dist/pScan main.go
-      - go build -ldflags="-s -w -X 'github.com/zhuima/pScan/cmd.version={{ .VERSION }}' -X 'github.com/zhuima/pScan/cmd.buildTime={{ .BUILDDATE }} '  -X 'github.com/zhuima/pScan/cmd.gitCommit={{ .GITCOMMIT }}' -X 'github.com/zhuima/pScan/cmd.goVersion={{ .GOVERSION }}'"  -o dist/pScan main.go
+      - go build -ldflags="-s -w -X 'github.com/zhuima/pScan/cmd.version={{ .VERSION }}' -X 'github.com/zhuima/pScan/cmd.buildTime={{ .BUILDTIME }} '  -X 'github.com/zhuima/pScan/cmd.gitCommit={{ .GITCOMMIT }}' -X 'github.com/zhuima/pScan/cmd.goVersion={{ .GOVERSION }}'"  -o dist/pScan main.go
 
 
   goreleaser:
