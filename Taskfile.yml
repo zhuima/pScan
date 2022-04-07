@@ -23,6 +23,9 @@ vars:
     sh: echo "$(TZ=Asia/Shanghai date +%FT%T%z)"
 
 
+  # Goversion
+  GOVERSION:
+    sh: echo "$(go version | awk -F'version' '{print $2}' | awk '{print $1}')"
 
 
 tasks:
@@ -63,9 +66,16 @@ tasks:
     desc: "Run build"
     cmds:
       # - go build -ldflags '-s -w' "-X 'github.com/zhuima/pScan/cmd/version.version=0.1'"  -o dist/pScan main.go
-      - go build -ldflags="-s -w -X 'github.com/zhuima/pScan/cmd.version={{ .VERSION }}' -X 'github.com/zhuima/pScan/cmd.buildTime={{ .BUILDDATE }} '  -X 'github.com/zhuima/pScan/cmd.gitCommit={{ .GITCOMMIT }}'"  -o dist/pScan main.go
+      - go build -ldflags="-s -w -X 'github.com/zhuima/pScan/cmd.version={{ .VERSION }}' -X 'github.com/zhuima/pScan/cmd.buildTime={{ .BUILDDATE }} '  -X 'github.com/zhuima/pScan/cmd.gitCommit={{ .GITCOMMIT }}' -X 'github.com/zhuima/pScan/cmd.goVersion={{ .GOVERSION }}'"  -o dist/pScan main.go
+
+
+  goreleaser:
+    desc: "Goreleaser Test"
+    cmds:
+      - goreleaser release --snapshot --skip-publish --rm-dist
 
   clean:
     desc: "Run clean"
     cmds:
-      - rm -rf bin/*
+      - rm -rf dist/*
+

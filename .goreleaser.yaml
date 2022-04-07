@@ -1,0 +1,51 @@
+# This is an example .goreleaser.yml file with some sensible defaults.
+# Make sure to check the documentation at https://goreleaser.com
+before:
+  hooks:
+    # You may remove this if you don't use go modules.
+    - go mod tidy
+    # you may remove this if you don't need go generate
+    - go generate ./...
+builds:
+  - main: .
+    ldflags:
+      - '-s -w -X github.com/zhuima/pScan/cmd.version={{.Version}} -X github.com/zhuima/pScan/cmd.gitCommit={{.ShortCommit}} -X github.com/zhuima/pScan/cmd..BuildDate={{.Env.BuildTime}} -X github.com/zhuima/pScan/cmd.goVersion={{ .Env.GOVERSION }}'
+    env:
+        - CGO_ENABLED=0
+        - GO111MODULE=on
+        - GOPROXY=https://goproxy.io
+    goos:
+      - linux
+      - windows 
+      - darwin
+archives:
+  - replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+
+
+# Check https://goreleaser.com/customization/homebrew/
+brews:
+  - homepage: "https://github.com/zhuima/pScan"
+    description: "Fast TCP Port Scanner."
+    folder: Formula
+    commit_author:
+      name: zhuima
+      email: zhuima314@gmail.com
+    tap:
+      owner: zhuima
+      name: pScan
+
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
