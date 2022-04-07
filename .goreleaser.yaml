@@ -19,12 +19,19 @@ builds:
       - windows 
       - darwin
 archives:
-  - replacements:
+  - format: binary
+    replacements:
       darwin: Darwin
       linux: Linux
-      windows: Windows
       386: i386
       amd64: x86_64
+  - id: homebrew
+    name_template: "{{ .Binary }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
+    format: zip
 
 
 # Check https://goreleaser.com/customization/homebrew/
