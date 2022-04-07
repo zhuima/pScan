@@ -30,7 +30,8 @@ archives:
 
 # Check https://goreleaser.com/customization/homebrew/
 brews:
-  - homepage: "https://github.com/zhuima/pScan"
+  - name: pScan
+    homepage: "https://github.com/zhuima/pScan"
     description: "Fast TCP Port Scanner."
     folder: Formula
     commit_author:
