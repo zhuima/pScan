@@ -28,9 +28,13 @@ archives:
       - goos: windows
         format: zip
 
+#
+project_name: pscan
+
+
 # Check https://goreleaser.com/customization/homebrew/
 brews:
-  - name: pScan
+  - name: pscan
     homepage: "https://github.com/zhuima/pScan"
     description: "Fast TCP Port Scanner."
     folder: Formula
@@ -39,7 +43,7 @@ brews:
       email: zhuima314@gmail.com
     tap:
       owner: zhuima
-      name: pScan
+      name: pscan
 
 checksum:
   name_template: 'checksums.txt'
