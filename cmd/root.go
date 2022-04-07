@@ -9,10 +9,8 @@ package cmd
 import (
 	"fmt"
 	"os"
-
 	"strings"
 	"github.com/spf13/cobra"
-
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/viper"
 )
@@ -52,9 +50,9 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.pScan.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.pscan.yaml)")
 
-	rootCmd.PersistentFlags().StringP("hosts-file", "f", "pScan.hosts", "pScan hosts file")
+	rootCmd.PersistentFlags().StringP("hosts-file", "f", "pscan.hosts", "pScan hosts file")
 
 
 	replacer := strings.NewReplacer("-", "_")
@@ -85,6 +83,13 @@ func initConfig() {
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
+
+
+	if err := viper.SafeWriteConfig(); err != nil {
+		// Config File "/Users/<user>/.pscan/config.yaml" Already Exists
+		// fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
+	}
+
 
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {

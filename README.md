@@ -11,7 +11,7 @@ pscan - short for Port Scanner - executes TCP port scan on a list of hosts
 
 ## 开发工具
 
-vscode/go1.16/cobra
+vscode/go1.16/cobra/taskfile/goreleaser
 
 
 
@@ -54,6 +54,41 @@ Flags:
   -t, --toggle              Help message for toggle
 
 Use "pcan [command] --help" for more information about a command.
+```
+
+
+### 如果用户设置了 .pscan.yaml 文件
+
+```python
+> pscan hosts list
+> cat $HOME/.pScan.yaml
+hosts-file: my.hosts
+
+```
+
+
+### 如果用户没有设置 .pscan.yaml 文件的情况， 默认读写当前目录下的主机列表文件
+
+```python
+> pscan hosts list
+
+# 会在当前目录下生成 pscan.hosts文件
+```
+
+### 从环境变量读取或手动指定主机列表文件
+
+```python
+> PSCAN_HOSTS_FILE=newFile.hosts pscan hosts list
+
+# 或
+
+> pscan hosts list -f /path/to/newFile.hosts
+```
+
+### 手动指定配置文件
+
+```python
+> pscan hosts list --config /path/to/config.yaml
 ```
 
 
