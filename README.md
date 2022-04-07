@@ -1,8 +1,8 @@
-## pScan
+## pscan
 
 [![goreleaser](https://github.com/zhuima/pScan/actions/workflows/goreleaser.yml/badge.svg)](https://github.com/zhuima/pScan/actions/workflows/goreleaser.yml)
 
-pScan - short for Port Scanner - executes TCP port scan on a list of hosts
+pscan - short for Port Scanner - executes TCP port scan on a list of hosts
 
 
 
@@ -20,24 +20,24 @@ vscode/go1.16/cobra
 ### Homebrew
 
 ```python
-brew tap zhuima/pScan https://github.com/zhuima/pScan
-brew install pScan
-pScan
+brew tap zhuima/pscan https://github.com/zhuima/pScan
+brew install pscan
+pscan
 ```
 
-## 快速上手
+### 快速上手
 
 ```python
-❯ ./dist/pScan
-pScan - short for Port Scanner - executes TCP port scan
+❯ pscan
+pscan - short for Port Scanner - executes TCP port scan
 on a list of hosts.
 
-pScan allows you to add, list, and delete hosts from the list.
+pscan allows you to add, list, and delete hosts from the list.
 pScan executes a port scan on specified TCP ports. You can customize the
 target ports using a command line flag.
 
 Usage:
-  pScan [command]
+  pscan [command]
 
 Available Commands:
   completion  Generate bash completion scripts
@@ -53,7 +53,7 @@ Flags:
   -f, --hosts-file string   pScan hosts file (default "pScan.hosts")
   -t, --toggle              Help message for toggle
 
-Use "pScan [command] --help" for more information about a command.
+Use "pcan [command] --help" for more information about a command.
 ```
 
 

@@ -24,13 +24,13 @@ var (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "pScan",
+	Use:   "pscan",
 	Short: "Fast TCP Port Scanner",
-	Long: `pScan - short for Port Scanner - executes TCP port scan
+	Long: `pscan - short for Port Scanner - executes TCP port scan
 on a list of hosts.
 
-pScan allows you to add, list, and delete hosts from the list.
-pScan executes a port scan on specified TCP ports. You can customize the
+pscan allows you to add, list, and delete hosts from the list.
+pscan executes a port scan on specified TCP ports. You can customize the
 target ports using a command line flag.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
@@ -81,7 +81,7 @@ func initConfig() {
 
 		// Search config in home directory with name ".pScan" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".pScan")
+		viper.SetConfigName(".pscan")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
