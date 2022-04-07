@@ -17,12 +17,6 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.16
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v2
-        with:
-          distribution: goreleaser
-          version: latest
-          args: release --rm-dist
 
       - name: Get Current date
         id: date
@@ -30,8 +24,15 @@ jobs:
 
       - name: Set GOVERSION env
         id: set-goversion-env
-        # (2)
         run: echo "::set-env name=GOVERSION::$(go version)"
 
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          distribution: goreleaser
+          version: latest
+          args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GORELEASER_GITHUB_TOKEN }}
+
+
