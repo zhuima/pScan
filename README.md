@@ -15,6 +15,16 @@ vscode/go1.16/cobra
 
 
 
+## 安装
+
+### Homebrew
+
+```python
+brew tap zhuima/pScan https://github.com/zhuima/pScan
+brew install pScan
+pScan
+```
+
 ## 快速上手
 
 ```python
