@@ -45,6 +45,18 @@ brews:
       owner: zhuima
       name: pscan
 
+nfpms:
+  - id: pscan-nfpms
+    homepage: https://github.com/zhuima/pScan
+    maintainer: zhuima <zhuima314@gmail.com>
+    description: pscan is a Fast TCP Port Scanner.
+    license: MIT
+    formats:
+      - deb
+      - rpm
+    bindir: /usr/bin
+
+
 checksum:
   name_template: 'checksums.txt'
 snapshot:
