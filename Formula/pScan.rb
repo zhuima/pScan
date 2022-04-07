@@ -5,20 +5,20 @@
 class PScan < Formula
   desc "Fast TCP Port Scanner."
   homepage "https://github.com/zhuima/pScan"
-  version "1.0.9"
+  version "1.1.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/zhuima/pScan/releases/download/v1.0.9/pScan_1.0.9_Darwin_arm64.tar.gz"
-      sha256 "5ef2992e3c57ab58f917eaa19df48a6283d2b9dc54b5f9cfec2cc7c49a603878"
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.0/pScan_1.1.0_Darwin_arm64.tar.gz"
+      sha256 "f28048285d55490c121bfc3706149ba85acc65f18720f34456ba8190c22e4216"
 
       def install
         bin.install "pScan"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/zhuima/pScan/releases/download/v1.0.9/pScan_1.0.9_Darwin_x86_64.tar.gz"
-      sha256 "c32f4a09502022eed33d9317ceba55a36f55843b2a9c7b669fa324d64f20e074"
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.0/pScan_1.1.0_Darwin_x86_64.tar.gz"
+      sha256 "15458e76bf5e4a44e1b39524c3a8704c17cccdcbf8d47cfe4f64987200e5a667"
 
       def install
         bin.install "pScan"
@@ -27,17 +27,17 @@ class PScan < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zhuima/pScan/releases/download/v1.0.9/pScan_1.0.9_Linux_arm64.tar.gz"
-      sha256 "434805ccd5a337e18047c0aa28912dcb5adffdf039c63e72a76c933a9bb0b565"
+    if Hardware::CPU.intel?
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.0/pScan_1.1.0_Linux_x86_64.tar.gz"
+      sha256 "e93d1db8968577e5407aa9d6360e245472a6d3f921f0b29cfbcbff840cc847a0"
 
       def install
         bin.install "pScan"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/zhuima/pScan/releases/download/v1.0.9/pScan_1.0.9_Linux_x86_64.tar.gz"
-      sha256 "75ce42990e11cd7d0ebb17a389a6d7fd7c2950d854ea42292d0dbe7f1f903c70"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.0/pScan_1.1.0_Linux_arm64.tar.gz"
+      sha256 "6b1701e59359a4d36b1da3435e15e869368f1c5c748cbd1a94063fbaaa233d34"
 
       def install
         bin.install "pScan"
