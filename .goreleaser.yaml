@@ -9,7 +9,7 @@ before:
 builds:
   - main: .
     ldflags:
-      - '-s -w -X github.com/zhuima/pScan/cmd.version={{ .Version }} -X github.com/zhuima/pScan/cmd.gitCommit={{ .ShortCommit }} -X github.com/zhuima/pScan/cmd..BuildDate={{ .Env.BUILDDATE }} -X github.com/zhuima/pScan/cmd.goVersion={{ .Env.GOVERSION }}'
+      - '-s -w -X github.com/zhuima/pScan/cmd.version={{ .Version }} -X github.com/zhuima/pScan/cmd.gitCommit={{ .ShortCommit }} -X github.com/zhuima/pScan/cmd.BuildDate={{ .Env.BUILDTIME }} -X github.com/zhuima/pScan/cmd.goVersion={{ .Env.GOVERSION }}'
     env:
         - CGO_ENABLED=0
         - GO111MODULE=on
