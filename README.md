@@ -58,31 +58,13 @@ Use "pcan [command] --help" for more information about a command.
 
 
 
-## 项目结构
+## TODO
+
+- [ ] 支持端口区间
+- [ ] 添加日志记录操作信息
+- [ ] 添加preview动作来进行在线查阅帮助文档
+- [ ] 实现RPM包支持
 
 
-```python
-.
-├── LICENSE
-├── README.md
-├── Taskfile.yml
-├── cmd
-│   ├── add.go
-│   ├── completion.go
-│   ├── delete.go
-│   ├── docs.go
-│   ├── hosts.go
-│   ├── list.go
-│   ├── root.go
-│   ├── scan.go
-│   └── version.go
-├── config.yaml
-├── go.mod
-├── go.sum
-├── main.go
-├── newFile.hosts
-├── pScan.hosts
-└── scan
-    ├── hostList.go
-    └── scanHosts.go
-```
+
+
