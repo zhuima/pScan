@@ -10,11 +10,11 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	"github.com/spf13/cobra"
+
 	homedir "github.com/mitchellh/go-homedir"
+	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
-
 
 var (
 	cfgFile string
@@ -54,12 +54,13 @@ func init() {
 
 	rootCmd.PersistentFlags().StringP("hosts-file", "f", "pscan.hosts", "pScan hosts file")
 
-
 	replacer := strings.NewReplacer("-", "_")
 	viper.SetEnvKeyReplacer(replacer)
 	viper.SetEnvPrefix("PSCAN")
 
+	//nolint: errcheck
 	viper.BindPFlag("hosts-file", rootCmd.PersistentFlags().Lookup("hosts-file"))
+
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
@@ -83,13 +84,6 @@ func initConfig() {
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
-
-
-	if err := viper.SafeWriteConfig(); err != nil {
-		// Config File "/Users/<user>/.pscan/config.yaml" Already Exists
-		// fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
-	}
-
 
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {

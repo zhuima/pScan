@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+
 	"github.com/zhuima/pScan/scan"
 
 	"github.com/spf13/cobra"
@@ -66,7 +67,8 @@ func printResults(out io.Writer, results []scan.Results) error {
 		message += fmt.Sprintf("----> %s:", r.Host)
 
 		if r.NotFound {
-			message += fmt.Sprintf(" Host not found\n\n")
+			//nolint: gosimple
+			message += fmt.Sprintf("Host not found\n\n")
 			continue
 		}
 
