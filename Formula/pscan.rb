@@ -5,20 +5,20 @@
 class Pscan < Formula
   desc "Fast TCP Port Scanner."
   homepage "https://github.com/zhuima/pScan"
-  version "1.1.7"
+  version "1.1.8"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/zhuima/pScan/releases/download/v1.1.7/pscan_1.1.7_Darwin_x86_64.tar.gz"
-      sha256 "78e356d8abbf684fc12eabb042b2553815d0c6790c278c3108931481c9873d1c"
+    if Hardware::CPU.arm?
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.8/pscan_1.1.8_Darwin_arm64.tar.gz"
+      sha256 "72f1a971efe8e751260ec69693dac9431769205e60957ab3a7a4943e6ce50454"
 
       def install
         bin.install "pscan"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/zhuima/pScan/releases/download/v1.1.7/pscan_1.1.7_Darwin_arm64.tar.gz"
-      sha256 "07ad7938b909ea73f9ca65fd49ec3e3ff0c7593fb5eac439289760c57ea2db65"
+    if Hardware::CPU.intel?
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.8/pscan_1.1.8_Darwin_x86_64.tar.gz"
+      sha256 "800809be3cbf764e4c72f4c43ef9f614761f8d653ed2c6cc451f1d4691d32a55"
 
       def install
         bin.install "pscan"
@@ -27,17 +27,17 @@ class Pscan < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zhuima/pScan/releases/download/v1.1.7/pscan_1.1.7_Linux_arm64.tar.gz"
-      sha256 "5bb0b26cf89f3e893652dc75d688786dc98ff1c89f905be8840ca2d315a13f98"
+    if Hardware::CPU.intel?
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.8/pscan_1.1.8_Linux_x86_64.tar.gz"
+      sha256 "1e2dfa168bc955595fa974f9f57b979e8516774f7cf34b9e88d87201eaa81396"
 
       def install
         bin.install "pscan"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/zhuima/pScan/releases/download/v1.1.7/pscan_1.1.7_Linux_x86_64.tar.gz"
-      sha256 "c3b85124b323195fdbbe3ef4ce9640330adb19dd7bd89c611b25028bf9db46fa"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.8/pscan_1.1.8_Linux_arm64.tar.gz"
+      sha256 "d6a2b6c8876fb33faf6cb6127c799ca7510b290f5748655cfd7149e9ac8cfde4"
 
       def install
         bin.install "pscan"
