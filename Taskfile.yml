@@ -1,7 +1,5 @@
 version: '3'
 
-
-
 vars:
   # version
   VERSION: "0.0.2"

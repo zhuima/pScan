@@ -1,0 +1,32 @@
+# 定义 pre-task, global variables
+
+# 定义全局镜像文件
+
+image: docker.registry.dajie-inc.com/k8s/maven-jdk8:v3.6
+
+
+# 2.配置运行 stage
+stages:
+  - scan
+
+
+# 执行 soanr-scan
+sonar-scan:
+  tags:
+    - k8s-runner
+  allow_failure: true
+  stage: scan
+  image: docker.registry.dajie-inc.com/k8s/sonar-cli:v1
+  script:
+    - echo -e "\033[5;35;40m soanr scan \033[0m"
+    - sonar-scanner -Dsonar.host.url=https://sonar.dajie-inc.com/  -Dsonar.login=${SONAR_TOKEN}  -Dsonar.projectKey=${CI_PROJECT_NAME}  -Dsonar.projectName=${CI_PROJECT_NAME}  -Dsonar.branch.name=$CI_COMMIT_REF_NAME -Dsonar.sourceEncoding=UTF-8  -Dsonar.java.binaries=.
+
+    - echo "\033[5;35;40m 请复制以下链接查看sonar扫描结果 \033[0m" \
+    - echo "\033[5;35;40m https://sonar.dajie-inc.com/dashboard?id=${CI_PROJECT_NAME} \033[0m"
+  allow_failure: true
+
+
+# 执行docker_build
+
+
+# 执行deploy_k8s

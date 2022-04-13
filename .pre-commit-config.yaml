@@ -1,0 +1,5 @@
+repos:
+  - repo: https://github.com/zhuima/pScan
+    rev: v1.1.8
+    hooks:
+      - id: pScan

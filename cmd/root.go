@@ -58,7 +58,7 @@ func init() {
 	viper.SetEnvKeyReplacer(replacer)
 	viper.SetEnvPrefix("PSCAN")
 
-	//nolint: errcheck
+	//  nolint: errcheck
 	viper.BindPFlag("hosts-file", rootCmd.PersistentFlags().Lookup("hosts-file"))
 
 	// Cobra also supports local flags, which will only run
