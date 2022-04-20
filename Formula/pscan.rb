@@ -5,20 +5,20 @@
 class Pscan < Formula
   desc "Fast TCP Port Scanner."
   homepage "https://github.com/zhuima/pScan"
-  version "1.1.11"
+  version "1.1.12"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/zhuima/pScan/releases/download/v1.1.11/pscan_1.1.11_Darwin_x86_64.tar.gz"
-      sha256 "eacb8a3a812a451ce164b7d666b1ec0e0b9026aaf889f23b9bc4b5efb3ec5e3c"
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.12/pscan_1.1.12_Darwin_x86_64.tar.gz"
+      sha256 "a8aa1da379fc9c0ce9933c2fdcbeab15d75846dbac79dcbd598955486e3a3c32"
 
       def install
         bin.install "pscan"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/zhuima/pScan/releases/download/v1.1.11/pscan_1.1.11_Darwin_arm64.tar.gz"
-      sha256 "e5e4c60f6f46eef6165bbceafbd24ca6a5f2140d01b5eb4f5ae1561411fd4cda"
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.12/pscan_1.1.12_Darwin_arm64.tar.gz"
+      sha256 "0f0540c9e641b1d339df093e7c639408bf8d34942743f4e173e3af6dcc5c8a84"
 
       def install
         bin.install "pscan"
@@ -28,16 +28,16 @@ class Pscan < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/zhuima/pScan/releases/download/v1.1.11/pscan_1.1.11_Linux_x86_64.tar.gz"
-      sha256 "90b5917b64d81ee9c19409575cc8f6a0169d05ff5677b300b23d5256238a4cf8"
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.12/pscan_1.1.12_Linux_x86_64.tar.gz"
+      sha256 "bf4a76b58cfedd0f2b59feb2dda81b51ac7899a6c1c09ff9eda09176c1123602"
 
       def install
         bin.install "pscan"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zhuima/pScan/releases/download/v1.1.11/pscan_1.1.11_Linux_arm64.tar.gz"
-      sha256 "995407789674a38683bb4baeb906af3d819d1f4f280cf910408cefff6fe7ef6b"
+      url "https://github.com/zhuima/pScan/releases/download/v1.1.12/pscan_1.1.12_Linux_arm64.tar.gz"
+      sha256 "3bfc5a25ccfcd393d83033bb1c662b0a27f5c1e6ced938f61ea372ee94f66cfd"
 
       def install
         bin.install "pscan"
