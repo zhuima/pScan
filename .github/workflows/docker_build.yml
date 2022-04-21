@@ -80,7 +80,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build_args: RELEASE_VERSION=${{ steps.get_version.outputs.release_version }}
+          build-args: RELEASE_VERSION=${{ steps.get_version.outputs.release_version }}
           # cache-from: type=local,src=/tmp/.buildx-cache
           # cache-to: type=local,dest=/tmp/.buildx-cache
 
