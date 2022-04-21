@@ -2,6 +2,7 @@
 
 [![goreleaser](https://github.com/zhuima/pScan/actions/workflows/goreleaser.yml/badge.svg)](https://github.com/zhuima/pScan/actions/workflows/goreleaser.yml)
 
+
 pscan - short for Port Scanner - executes TCP port scan on a list of hosts
 
 
