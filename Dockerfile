@@ -1,17 +1,14 @@
-FROM golang:1.16 AS build
-WORKDIR /go/src/github.com/zhuima/pscan
-COPY . .
-RUN VERSION=$(git describe --tags --abbrev=0) && \
-    # GITCOMMIT=$(git rev-parse --short HEAD) && \
-    # BUILDTIME=$(TZ=Asia/Shanghai date +%FT%T%z) && \
-    # GOVERSION="1.16" && \
-    CGO_ENABLED=0 go build -o bin/pscan -ldflags "-X="github.com/zhuima/pScan/cmd.version=${VERSION}
-# CGO_ENABLED=0 go build -o bin/pscan -ldflags "-X="github.com/zhuima/pScan/cmd.version=${VERSION} github.com/zhuima/pScan/cmd.gitCommit=${GITCOMMIT} github.com/zhuima/pScan/cmd.buildTime=${BUILDTIME} github.com/zhuima/pScan/cmd.goVersion=${GOVERSION}
+FROM alpine:3.14.2 as alpine
 
+ARG RELEASE_VERSION=latest
 
-FROM alpine:3.14.2
 RUN adduser -D pscan && \
     apk add --no-cache bash git openssh-client
-COPY --from=build /go/src/github.com/zhuima/pscan/bin/* /usr/bin/
+
+RUN curl -s -L https://github.com/zhuima/pScan/releases/latest | sed -nE 's!.*"([^"]*Linux_x86_64.tar.gz)".*!https://github.com\1!p' | xargs -n 1 curl -L -o /tmp/pscan.tar.gz &&  \
+    tar -xzf /tmp/pscan.tar.gz -C /tmp && \
+    mv /tmp/pscan /bin/pscan && \
+    chmod +x /bin/pscan
+
 USER pscan
 ENTRYPOINT ["pscan"]
