@@ -13,11 +13,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// completionCmd represents the completion command
+// completionCmd represents the completion command.
 var completionCmd = &cobra.Command{
 	Use:   "completion [bash|zsh|fish|powershell]",
 	Short: "Generate bash completion scripts",
-    Long: `To load completions:
+	Long: `To load completions:
 
 Bash:
 
@@ -53,7 +53,7 @@ $ yourprogram completion fish > ~/.config/fish/completions/yourprogram.fish
 	Args:                  cobra.ExactValidArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return completionAction(os.Stdout, args)
-		
+
 	},
 }
 
@@ -85,4 +85,3 @@ func completionAction(out io.Writer, args []string) error {
 	}
 	return nil
 }
-	

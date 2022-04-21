@@ -9,13 +9,14 @@ package cmd
 import (
 	"fmt"
 	"io"
-	"os"
 	"io/ioutil"
+	"os"
+
 	"github.com/spf13/cobra"
 	"github.com/spf13/cobra/doc"
 )
 
-// docsCmd represents the docs command
+// docsCmd represents the docs command.
 var docsCmd = &cobra.Command{
 	Use:   "docs",
 	Short: "Generate documentation for your command",
@@ -26,7 +27,7 @@ var docsCmd = &cobra.Command{
 		}
 
 		if dir == "" {
-			if  dir, err = ioutil.TempDir("", "pScan"); err != nil {
+			if dir, err = ioutil.TempDir("", "pScan"); err != nil {
 				return err
 			}
 		}
@@ -49,9 +50,7 @@ func init() {
 	// docsCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
-
-
-func docsAction(out io.Writer, dir string)  error {
+func docsAction(out io.Writer, dir string) error {
 	if err := doc.GenMarkdownTree(rootCmd, dir); err != nil {
 		return err
 	}

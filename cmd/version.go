@@ -12,17 +12,15 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
 var (
-    version   string
-    buildTime string
-    osArch    string
-	gitCommit    string
-	goVersion    string
+	version   string
+	buildTime string
+	osArch    string
+	gitCommit string
+	goVersion string
 )
 
-
-// versionCmd represents the version command
+// versionCmd represents the version command.
 var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "A brief description of your command",

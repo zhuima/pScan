@@ -13,14 +13,14 @@ type PortState struct {
 
 type state bool
 
-// Results repersents the scan results for a single host
+// Results represents the scan results for a single host.
 type Results struct {
 	Host       string
 	NotFound   bool
 	PortStates []PortState
 }
 
-// String converts the boolean value of state to a human readable string
+// String converts the boolean value of state to a human readable string.
 func (s state) String() string {
 	if s {
 		return "open"
@@ -28,7 +28,7 @@ func (s state) String() string {
 	return "closed"
 }
 
-// scanPort perfoms a port scan on a single TCP port
+// scanPort perfoms a port scan on a single TCP port.
 func scanPort(host string, port int) PortState {
 	p := PortState{
 		Port: port,
@@ -48,7 +48,7 @@ func scanPort(host string, port int) PortState {
 
 }
 
-// Run performs a port scan on the hosts list
+// Run performs a port scan on the hosts list.
 func Run(hl *HostsList, ports []int) []Results {
 	res := make([]Results, 0, len(hl.Hosts))
 

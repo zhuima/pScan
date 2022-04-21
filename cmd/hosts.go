@@ -10,7 +10,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// hostsCmd represents the hosts command
+// hostsCmd represents the hosts command.
 var hostsCmd = &cobra.Command{
 	Use:   "hosts",
 	Short: "Manage the hosts list",

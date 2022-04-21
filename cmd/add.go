@@ -10,12 +10,13 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"github.com/zhuima/pScan/scan"
-	"github.com/spf13/viper"
+
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
+	"github.com/zhuima/pScan/scan"
 )
 
-// addCmd represents the add command
+// addCmd represents the add command.
 var addCmd = &cobra.Command{
 	Use:          "add <host1>...<hostn>",
 	Aliases:      []string{"a"},
@@ -25,7 +26,6 @@ var addCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		// hostsFile, err := cmd.Flags().GetString("hosts-file")
 		hostsFile := viper.GetString("hosts-file")
-
 
 		// if err != nil {
 		// 	return err

@@ -22,7 +22,7 @@ var (
 	ErrNotExists = errors.New("host does not exist")
 )
 
-// HostsList represents a list of hosts to run port scan
+// HostsList represents a list of hosts to run port scan.
 type HostsList struct {
 	Hosts []string
 }
@@ -68,7 +68,7 @@ func (hl *HostsList) List() {
 	}
 }
 
-// Load obtains hosts from a hosts file
+// Load obtains hosts from a hosts file.
 func (hl *HostsList) Load(filename string) error {
 	f, err := os.Open(filename)
 	if err != nil {
@@ -88,7 +88,7 @@ func (hl *HostsList) Load(filename string) error {
 	return nil
 }
 
-// Save saves the hosts to a hosts file
+// Save saves the hosts to a hosts file.
 func (hl *HostsList) Save(filename string) error {
 	output := ""
 	for _, host := range hl.Hosts {

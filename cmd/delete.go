@@ -10,12 +10,13 @@ import (
 	"fmt"
 	"io"
 	"os"
+
 	"github.com/zhuima/pScan/scan"
 
 	"github.com/spf13/cobra"
 )
 
-// deleteCmd represents the delete command
+// deleteCmd represents the delete command.
 var deleteCmd = &cobra.Command{
 	Use:          "delete <host1>...<host n>",
 	Aliases:      []string{"d"},

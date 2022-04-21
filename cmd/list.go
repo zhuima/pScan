@@ -11,13 +11,13 @@ import (
 	"io"
 	"os"
 
-	"github.com/zhuima/pScan/scan"
 	"github.com/spf13/viper"
+	"github.com/zhuima/pScan/scan"
 
 	"github.com/spf13/cobra"
 )
 
-// listCmd represents the list command
+// listCmd represents the list command.
 var listCmd = &cobra.Command{
 	Use:     "list",
 	Aliases: []string{"l"},

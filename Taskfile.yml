@@ -66,6 +66,11 @@ tasks:
       - GOPROXY=https://goproxy.io
       - go mod tidy
 
+  format:
+    desc: "Run format"
+    cmds:
+      - go fmt .
+
   build:
     desc: "Run build"
     cmds:
