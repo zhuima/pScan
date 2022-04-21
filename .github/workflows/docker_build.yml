@@ -24,10 +24,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - id: get_version
-        run: |
-          RELEASE_VERSION=$(echo $GITHUB_REF | sed -nE 's!refs/tags/!!p')
-          echo "::set-output name=release_version::$RELEASE_VERSION"
+
       # # 缓存 Docker 镜像以加速构建
       # - name: Cache Docker layers
       #   uses: actions/cache@v2
@@ -80,11 +77,10 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: RELEASE_VERSION=${{ steps.get_version.outputs.release_version }}
           # cache-from: type=local,src=/tmp/.buildx-cache
           # cache-to: type=local,dest=/tmp/.buildx-cache
 
       - name: Inspect image
         run: |
           docker buildx imagetools inspect \
-          ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ env.RELEASE_VERSION }}
+          ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ steps.meta.outputs.version }}
