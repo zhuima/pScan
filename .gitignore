@@ -31,7 +31,7 @@ go.work
 
 /dist 
 /docs 
-
+/Formula
 
 # End of https://www.toptal.com/developers/gitignore/api/go
 dist/
