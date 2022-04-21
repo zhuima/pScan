@@ -61,7 +61,6 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKERBUILD_GITHUB_TOKEN }}
-          build_args: RELEASE_VERSION=${{ steps.get_version.outputs.release_version }}
       # 根据输入自动生成 tag 和 label 等数据，说明见下
       - name: Extract metadata for Docker
         id: meta
@@ -81,6 +80,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build_args: RELEASE_VERSION=${{ steps.get_version.outputs.release_version }}
           # cache-from: type=local,src=/tmp/.buildx-cache
           # cache-to: type=local,dest=/tmp/.buildx-cache
 
